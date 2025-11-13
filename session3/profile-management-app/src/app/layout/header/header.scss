@@ -1,0 +1,193 @@
+.header {
+  background-color: #1e3a8a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  
+  .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+  }
+  
+  .header-logo {
+    .logo-link {
+      text-decoration: none;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      
+      .logo-icon {
+        width: 2rem;
+        height: 2rem;
+      }
+      
+      h1 {
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: 600;
+        transition: color 0.3s ease;
+      }
+      
+      &:hover {
+        h1 {
+          color: #60a5fa;
+        }
+      }
+    }
+  }
+  
+  .header-nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    
+    .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 0.5rem;
+      
+      .nav-item {
+        a {
+          text-decoration: none;
+          color: #e5e7eb;
+          font-size: 1rem;
+          font-weight: 500;
+          padding: 0.5rem 1rem;
+          border-radius: 0.375rem;
+          transition: all 0.3s ease;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          
+          svg {
+            width: 1.25rem;
+            height: 1.25rem;
+          }
+          
+          &:hover {
+            color: #ffffff;
+            background-color: rgba(96, 165, 250, 0.2);
+          }
+          
+          &.active {
+            color: #ffffff;
+            background-color: #2563eb;
+          }
+        }
+      }
+    }
+  }
+  
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    
+    .notification-btn {
+      background: transparent;
+      border: none;
+      color: #e5e7eb;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 0.375rem;
+      position: relative;
+      transition: all 0.3s ease;
+      
+      svg {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+      
+      .notification-badge {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: #ef4444;
+        color: #ffffff;
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 0.125rem 0.375rem;
+        border-radius: 9999px;
+        min-width: 1.25rem;
+        text-align: center;
+      }
+      
+      &:hover {
+        color: #ffffff;
+        background-color: rgba(96, 165, 250, 0.2);
+      }
+    }
+  }
+  
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 0.375rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    
+    .menu-icon {
+      width: 1.5rem;
+      height: 0.125rem;
+      background-color: #ffffff;
+      transition: all 0.3s ease;
+    }
+  }
+  
+  @media (max-width: 968px) {
+    .header-nav {
+      position: absolute;
+      top: 70px;
+      left: 0;
+      right: 0;
+      background-color: #1e3a8a;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      justify-content: flex-start;
+      
+      &.active {
+        max-height: 400px;
+      }
+      
+      .nav-list {
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 1.5rem;
+        width: 100%;
+        
+        .nav-item {
+          width: 100%;
+          
+          a {
+            display: flex;
+            padding: 0.75rem 1rem;
+            width: 100%;
+          }
+        }
+      }
+    }
+    
+    .header-actions {
+      .notification-btn {
+        display: none;
+      }
+    }
+    
+    .menu-toggle {
+      display: flex;
+    }
+  }
+}

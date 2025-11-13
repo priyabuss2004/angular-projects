@@ -1,0 +1,23 @@
+// _mixins.scss
+@function color($color-name) {
+  @if $color-name == 'primary' {
+    @return $primary-color;
+  } @else if $color-name == 'secondary' {
+    @return $secondary-color;
+  } @else {
+    @return null;
+  }
+}
+
+
+
+// mixins.scss
+@mixin flex-center($gap: 0.5rem) {
+  display: flex;
+  align-items: center;
+  gap: $gap;
+}
+
+@mixin box-shadow($x: 0, $y: 1px, $blur: 6px, $color: rgba(0, 0, 0, 0.1)) {
+  box-shadow: $x $y $blur $color;
+}

@@ -1,0 +1,9 @@
+<p>register-user works!</p>
+ <form [formGroup]="form" (ngSubmit)="onSubmit()" style="max-width: 500px; margin: auto;">
+      <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
+
+      <button type="submit" [disabled]="form.invalid" style="margin-top: 16px; color:white; background-color: cyan;">
+        Register
+      </button>
+    </form>
+

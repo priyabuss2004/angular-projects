@@ -1,0 +1,134 @@
+.user-list-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  h2 {
+    color: #333;
+    margin-bottom: 24px;
+    font-size: 28px;
+  }
+
+  .no-users {
+    text-align: center;
+    color: #666;
+    font-size: 18px;
+    padding: 40px;
+  }
+}
+
+.user-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.user-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  &.expanded {
+    background-color: #f5f5f5;
+  }
+
+  mat-card-header {
+    margin-bottom: 16px;
+  }
+
+  mat-card-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #1976d2;
+  }
+
+  mat-card-subtitle {
+    font-size: 14px;
+    color: #666;
+  }
+
+  .user-info {
+    p {
+      margin: 8px 0;
+      font-size: 14px;
+
+      strong {
+        color: #333;
+        margin-right: 8px;
+      }
+    }
+
+    .expanded-details {
+      margin-top: 16px;
+      padding: 16px;
+      background-color: white;
+      border-radius: 8px;
+      border-left: 4px solid #1976d2;
+      animation: slideDown 0.3s ease-out;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .bio {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #eee;
+      font-style: italic;
+      color: #555;
+    }
+
+    mat-chip {
+      margin-left: 8px;
+    }
+
+    .role-badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-left: 8px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+
+      &.role-admin {
+        background-color: #1976d2;
+        color: white;
+      }
+
+      &.role-user {
+        background-color: #7b1fa2;
+        color: white;
+      }
+
+      &.role-guest {
+        background-color: #f44336;
+        color: white;
+      }
+    }
+  }
+
+  mat-card-actions {
+    display: flex;
+    gap: 8px;
+    padding: 16px;
+
+    button {
+      span {
+        display: inline-block;
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+<p>app-test works!</p>
+<h1>{{ title }}</h1> <!-- Interpolation -->
+
+<!-- Property Binding Examples -->
+ <!-- Property Binding : Custom components attributes-->
+<img [src]="imageUrl" title="{{imageTitle}}" [width]="imgWidth" [height]="imgHeight" alt="Angular Logo">
+
+
+<input [value]="username"> <!-- Binding to value attribute-->
+
+<button disabled="{{isDisabled}}"> Hello </button>
+
+<button [disabled]="isDisabled">Disabled Button</button>
+
+
+<p [hidden]="isHidden">This text can be hidden</p>
+
+
+<button [attr.aria-label]="buttonLabel">Accessible Button</button>
+<input type="checkbox" [checked]="isChecked">
+
+<hr>
+
+<!-- Two-Way Binding -->
+ <!-- property + event binding-->
+<p>Username: <input [(ngModel)]="username"></p>
+<p>Hello, {{ username }}</p>
+
+<hr>
+
+<!-- Event Binding -->
+<button (click)="onClick($event)">Click Me</button>
+<p>Button clicked {{ count }} times</p>
+
+<hr>
+
+<div [class]="classValue()"> 
+  This is mydiv with dynamic class binding
+</div>
+
+<!-- Class Binding  - dynamical -->
+ <div [class.active]="isActive()"  [class.inactive]="!isActive()">Class Binding Example</div>
+
+<hr>
+
+<!-- Style Binding -->
+<div [style.color]="theme()"
+     [style.backgroundColor]="theme()"
+     [style.fontSize.px]="isActive() ? 20 : 16">
+  Style Binding Example (Theme: {{ theme() }})
+</div>

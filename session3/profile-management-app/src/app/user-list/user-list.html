@@ -1,0 +1,57 @@
+<div class="user-list-container">
+  <h2>Registered Users</h2>
+  
+  <div class="user-cards">
+    @if (users$ | async; as users) {
+      @if (users.length === 0) {
+        <p class="no-users">No users registered yet.</p>
+      } @else {
+        @for (user of users; track user.username) {
+          <mat-card class="user-card" [class.expanded]="expandedUser === user.username">
+            <mat-card-header>
+              <mat-card-title>{{ user.username }}</mat-card-title>
+              <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+            </mat-card-header>
+            
+            <mat-card-content>
+              <div class="user-info">
+                <p><strong>Gender:</strong> {{ user.gender | titlecase }}</p>
+                <p><strong>Date of Birth:</strong> {{ user.dob | date }}</p>
+                <p><strong>Role:</strong> 
+                  <span class="role-badge" [class]="'role-' + user.role" highlight>
+                    {{ user.role | uppercase }}
+                  </span>
+                </p>
+                @if (expandedUser === user.username) {
+                  <div class="expanded-details">
+                    <p><strong>Email:</strong> {{ user.email }}</p>
+                    <p><strong>Full Gender:</strong> {{ user.gender | titlecase }}</p>
+                    <p><strong>Account Created:</strong> {{ user.createdDate | date:'fullDate' }}</p>
+                    @if (user.bio) {
+                      <p class="bio"><strong>Bio:</strong> {{ user.bio }}</p>
+                    } @else {
+                      <p class="bio"><strong>Bio:</strong> <em>No bio provided</em></p>
+                    }
+                  </div>
+                }
+              </div>
+            </mat-card-content>
+            
+            <mat-card-actions align="end">
+              <button mat-raised-button color="primary" (click)="viewUser(user.username)">
+                 <span>{{ expandedUser === user.username ? 'Hide' : 'View' }}</span>
+              </button>
+              <button mat-raised-button color="accent">
+               
+                <span>Edit</span>
+              </button>
+              <button mat-raised-button color="warn" (click)="deleteUser(user.username)">
+                 <span>Delete</span>
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        }
+      }
+    }
+  </div>
+</div>
