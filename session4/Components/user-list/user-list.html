@@ -1,0 +1,20 @@
+<label>Search Text</label>
+<input type="text" [(ngModel)]="searchText" placeholder="Search users..." />
+@if (users.length > 0) {
+<ul>
+  @for (user of (users | filterusers: searchText); track user.name) {
+  <li>
+    <app-user-card [name]="user.name" [email]="user.email" (deleteUser)="removeUser($event)">>
+      <!--content projection for ng-content in child component-->
+      @if (user.isPremium) {
+      <span class="badge">Premium User</span>
+      }
+      <br />
+      <button (click)="viewProfile(user)">View Profile</button>
+    </app-user-card>
+  </li>
+  }
+</ul>
+} @else {
+<p>No users registered yet.</p>
+}
